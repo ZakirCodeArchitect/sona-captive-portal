@@ -161,7 +161,7 @@ export default function RegistrationForm({ onSuccess }) {
         <button
           type="submit"
           disabled={isSubmitting || !acceptTerms}
-          className="mt-1 flex h-10 w-full items-center justify-center gap-2 rounded-xl bg-tower-green text-sm font-semibold text-white shadow-[0_4px_12px_rgba(27,67,50,0.25)] transition-all duration-200 hover:-translate-y-px hover:bg-tower-green-dark hover:shadow-[0_6px_16px_rgba(27,67,50,0.35)] focus:outline-none focus:ring-2 focus:ring-tower-gold focus:ring-offset-2 focus:ring-offset-tower-dark disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0"
+          className="mt-1 flex h-10 w-full items-center justify-center gap-2 rounded-lg bg-tower-green text-sm font-semibold text-white shadow-[0_4px_12px_rgba(27,67,50,0.25)] transition-all duration-200 hover:-translate-y-px hover:bg-tower-green-dark hover:shadow-[0_6px_16px_rgba(27,67,50,0.35)] focus:outline-none focus:ring-2 focus:ring-tower-gold focus:ring-offset-2 focus:ring-offset-tower-dark disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0"
         >
           {isSubmitting ? (
             <>

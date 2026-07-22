@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { X } from 'lucide-react';
 
 const TERMS_TEXT = `Guest WiFi Terms & Conditions
@@ -11,9 +13,18 @@ By connecting to Sona Tower Guest WiFi, you agree to the following:
 For assistance, contact the Sona Tower IT Help Desk.`;
 
 export default function TermsModal({ isOpen, onClose }) {
+  useEffect(() => {
+    if (!isOpen) return undefined;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
-  return (
+  return createPortal(
     <div
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4"
       role="dialog"
@@ -22,7 +33,7 @@ export default function TermsModal({ isOpen, onClose }) {
       onClick={onClose}
     >
       <div
-        className="glass-card max-h-[80dvh] w-full max-w-lg overflow-hidden rounded-2xl shadow-2xl animate-fade-in-up"
+        className="glass-card max-h-[80dvh] w-full max-w-lg overflow-hidden rounded-lg shadow-2xl animate-fade-in-up"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between border-b border-black/8 px-6 py-4">
@@ -47,12 +58,13 @@ export default function TermsModal({ isOpen, onClose }) {
           <button
             type="button"
             onClick={onClose}
-            className="h-12 w-full rounded-2xl bg-tower-green font-semibold text-white transition-all hover:bg-tower-green-dark focus:outline-none focus:ring-2 focus:ring-tower-gold focus:ring-offset-2 focus:ring-offset-white"
+            className="h-12 w-full rounded-lg bg-tower-gold font-semibold text-white transition-all hover:bg-tower-gold-muted focus:outline-none focus:ring-2 focus:ring-tower-gold-bright focus:ring-offset-2 focus:ring-offset-white"
           >
             I Understand
           </button>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }
