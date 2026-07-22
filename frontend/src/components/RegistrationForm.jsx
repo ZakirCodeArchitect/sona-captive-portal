@@ -3,13 +3,13 @@ import { useForm } from 'react-hook-form';
 import {
   Building2,
   CreditCard,
+  Loader2,
   Lock,
   Phone,
   User,
 } from 'lucide-react';
 import FormField, { getInputClassName } from './FormField';
 import TermsModal from './TermsModal';
-import LoadingOverlay from './LoadingOverlay';
 import { submitRegistration } from '../api/client';
 import { formatCnic, formatPhone } from '../utils/formatters';
 import {
@@ -44,7 +44,6 @@ export default function RegistrationForm({ onSuccess }) {
   const acceptTerms = watch('acceptTerms');
 
   const onSubmit = async (data) => {
-    setSubmitError('');
     setIsSubmitting(true);
 
     try {
@@ -55,6 +54,7 @@ export default function RegistrationForm({ onSuccess }) {
         company: data.company.trim(),
       });
 
+      setSubmitError('');
       onSuccess?.(result.data);
     } catch (error) {
       setSubmitError(error.message);
@@ -65,9 +65,7 @@ export default function RegistrationForm({ onSuccess }) {
 
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)} noValidate className="relative flex flex-col gap-2.5">
-        {isSubmitting && <LoadingOverlay />}
-
+      <form onSubmit={handleSubmit(onSubmit)} noValidate className="flex flex-col gap-2.5">
         <FormField id="cnic" label="CNIC" icon={CreditCard} error={errors.cnic?.message}>
           <input
             id="cnic"
@@ -75,6 +73,7 @@ export default function RegistrationForm({ onSuccess }) {
             inputMode="numeric"
             autoComplete="off"
             placeholder="12345-1234567-1"
+            disabled={isSubmitting}
             className={getInputClassName({ hasError: !!errors.cnic, hasIcon: true })}
             {...register('cnic', {
               validate: validateCnic,
@@ -89,6 +88,7 @@ export default function RegistrationForm({ onSuccess }) {
             type="text"
             autoComplete="name"
             placeholder="Enter your full name"
+            disabled={isSubmitting}
             className={getInputClassName({ hasError: !!errors.fullName, hasIcon: true })}
             {...register('fullName', { validate: validateFullName })}
           />
@@ -101,6 +101,7 @@ export default function RegistrationForm({ onSuccess }) {
             inputMode="tel"
             autoComplete="tel"
             placeholder="03XX-XXXXXXX"
+            disabled={isSubmitting}
             className={getInputClassName({ hasError: !!errors.phoneNumber, hasIcon: true })}
             {...register('phoneNumber', {
               validate: validatePhone,
@@ -116,6 +117,7 @@ export default function RegistrationForm({ onSuccess }) {
             type="text"
             autoComplete="organization"
             placeholder="Enter your company name"
+            disabled={isSubmitting}
             className={getInputClassName({ hasError: !!errors.company, hasIcon: true })}
             {...register('company', { validate: validateCompany })}
           />
@@ -125,7 +127,8 @@ export default function RegistrationForm({ onSuccess }) {
           <label className="flex cursor-pointer items-start gap-2">
             <input
               type="checkbox"
-              className="mt-0.5 h-4 w-4 shrink-0 cursor-pointer rounded border-black/20 bg-white accent-tower-gold focus:ring-2 focus:ring-tower-gold focus:ring-offset-0"
+              disabled={isSubmitting}
+              className="mt-0.5 h-4 w-4 shrink-0 cursor-pointer rounded border-black/20 bg-white accent-tower-gold focus:ring-2 focus:ring-tower-gold focus:ring-offset-0 disabled:cursor-not-allowed"
               {...register('acceptTerms', { validate: validateTerms })}
             />
             <span className="text-xs leading-snug text-tower-text-secondary">
@@ -158,9 +161,16 @@ export default function RegistrationForm({ onSuccess }) {
         <button
           type="submit"
           disabled={isSubmitting || !acceptTerms}
-          className="mt-1 flex h-10 w-full items-center justify-center rounded-xl bg-tower-green text-sm font-semibold text-white shadow-[0_4px_12px_rgba(27,67,50,0.25)] transition-all duration-200 hover:-translate-y-px hover:bg-tower-green-dark hover:shadow-[0_6px_16px_rgba(27,67,50,0.35)] focus:outline-none focus:ring-2 focus:ring-tower-gold focus:ring-offset-2 focus:ring-offset-tower-dark disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0"
+          className="mt-1 flex h-10 w-full items-center justify-center gap-2 rounded-xl bg-tower-green text-sm font-semibold text-white shadow-[0_4px_12px_rgba(27,67,50,0.25)] transition-all duration-200 hover:-translate-y-px hover:bg-tower-green-dark hover:shadow-[0_6px_16px_rgba(27,67,50,0.35)] focus:outline-none focus:ring-2 focus:ring-tower-gold focus:ring-offset-2 focus:ring-offset-tower-dark disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0"
         >
-          Connect to WiFi
+          {isSubmitting ? (
+            <>
+              <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
+              Connecting…
+            </>
+          ) : (
+            'Connect to WiFi'
+          )}
         </button>
 
         <p className="text-center text-[11px] leading-snug text-tower-text-muted">
