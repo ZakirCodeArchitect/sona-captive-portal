@@ -22,7 +22,7 @@ export default function FormField({
         {children}
       </div>
       {error && (
-        <p className="flex items-center gap-1.5 text-[13px] text-tower-error-light" role="alert">
+        <p className="flex items-center gap-1.5 text-[13px] text-tower-error" role="alert">
           <AlertCircle className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
           <span>{error}</span>
         </p>
@@ -33,12 +33,12 @@ export default function FormField({
 
 export function getInputClassName({ hasError, hasIcon }) {
   return [
-    'h-10 w-full rounded-lg border bg-white/[0.06] text-sm text-tower-text',
+    'h-10 w-full rounded-lg border bg-white text-sm text-tower-text',
     'placeholder:text-tower-text-muted transition-all duration-200',
-    'focus:outline-none focus:bg-white/10',
+    'focus:outline-none focus:bg-white',
     hasIcon ? 'pl-9 pr-3' : 'px-3',
     hasError
-      ? 'border-tower-error bg-tower-error/10 focus:border-tower-error focus:ring-4 focus:ring-tower-error/20'
-      : 'border-white/14 focus:border-tower-gold focus:ring-4 focus:ring-tower-gold/25',
+      ? 'border-tower-error bg-tower-error/5 focus:border-tower-error focus:ring-4 focus:ring-tower-error/15'
+      : 'border-black/10 focus:border-tower-gold focus:ring-4 focus:ring-tower-gold/20',
   ].join(' ');
 }

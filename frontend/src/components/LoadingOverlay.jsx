@@ -3,7 +3,7 @@ import { Loader2 } from 'lucide-react';
 export default function LoadingOverlay({ message = 'Connecting you to WiFi…' }) {
   return (
     <div
-      className="absolute inset-0 z-10 flex flex-col items-center justify-center rounded-[20px] bg-tower-dark/60 backdrop-blur-sm"
+      className="absolute inset-0 z-10 flex flex-col items-center justify-center rounded-[20px] bg-white/70 backdrop-blur-sm"
       role="status"
       aria-live="polite"
       aria-label="Submitting registration"

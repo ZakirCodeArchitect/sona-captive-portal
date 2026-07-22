@@ -25,14 +25,14 @@ export default function TermsModal({ isOpen, onClose }) {
         className="glass-card max-h-[80dvh] w-full max-w-lg overflow-hidden rounded-2xl shadow-2xl animate-fade-in-up"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-center justify-between border-b border-white/10 px-6 py-4">
+        <div className="flex items-center justify-between border-b border-black/8 px-6 py-4">
           <h2 id="terms-title" className="text-lg font-semibold text-tower-text">
             Terms & Conditions
           </h2>
           <button
             type="button"
             onClick={onClose}
-            className="rounded-lg p-2 text-tower-text-secondary transition-colors hover:bg-white/10 hover:text-tower-text focus:outline-none focus:ring-2 focus:ring-tower-gold"
+            className="rounded-lg p-2 text-tower-text-secondary transition-colors hover:bg-black/5 hover:text-tower-text focus:outline-none focus:ring-2 focus:ring-tower-gold"
             aria-label="Close terms"
           >
             <X className="h-5 w-5" />
@@ -43,11 +43,11 @@ export default function TermsModal({ isOpen, onClose }) {
             {TERMS_TEXT}
           </p>
         </div>
-        <div className="border-t border-white/10 px-6 py-4">
+        <div className="border-t border-black/8 px-6 py-4">
           <button
             type="button"
             onClick={onClose}
-            className="h-12 w-full rounded-2xl bg-tower-green font-semibold text-white transition-all hover:bg-tower-green-dark focus:outline-none focus:ring-2 focus:ring-tower-gold focus:ring-offset-2 focus:ring-offset-tower-charcoal"
+            className="h-12 w-full rounded-2xl bg-tower-green font-semibold text-white transition-all hover:bg-tower-green-dark focus:outline-none focus:ring-2 focus:ring-tower-gold focus:ring-offset-2 focus:ring-offset-white"
           >
             I Understand
           </button>

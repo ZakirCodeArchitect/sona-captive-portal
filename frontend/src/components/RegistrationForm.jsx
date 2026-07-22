@@ -125,7 +125,7 @@ export default function RegistrationForm({ onSuccess }) {
           <label className="flex cursor-pointer items-start gap-2">
             <input
               type="checkbox"
-              className="mt-0.5 h-4 w-4 shrink-0 cursor-pointer rounded border-white/30 bg-white/5 accent-tower-gold focus:ring-2 focus:ring-tower-gold focus:ring-offset-0"
+              className="mt-0.5 h-4 w-4 shrink-0 cursor-pointer rounded border-black/20 bg-white accent-tower-gold focus:ring-2 focus:ring-tower-gold focus:ring-offset-0"
               {...register('acceptTerms', { validate: validateTerms })}
             />
             <span className="text-xs leading-snug text-tower-text-secondary">
@@ -140,7 +140,7 @@ export default function RegistrationForm({ onSuccess }) {
             </span>
           </label>
           {errors.acceptTerms && (
-            <p className="mt-1.5 text-[13px] text-tower-error-light" role="alert">
+            <p className="mt-1.5 text-[13px] text-tower-error" role="alert">
               {errors.acceptTerms.message}
             </p>
           )}
@@ -148,7 +148,7 @@ export default function RegistrationForm({ onSuccess }) {
 
         {submitError && (
           <div
-            className="rounded-xl border border-tower-error/40 bg-tower-error/10 px-4 py-3 text-sm text-tower-error-light"
+            className="rounded-xl border border-tower-error/30 bg-tower-error/5 px-4 py-3 text-sm text-tower-error"
             role="alert"
           >
             {submitError}
@@ -158,7 +158,7 @@ export default function RegistrationForm({ onSuccess }) {
         <button
           type="submit"
           disabled={isSubmitting || !acceptTerms}
-          className="mt-1 flex h-10 w-full items-center justify-center rounded-xl bg-tower-green text-sm font-semibold text-white shadow-[0_4px_12px_rgba(27,67,50,0.35)] transition-all duration-200 hover:-translate-y-px hover:bg-tower-green-dark hover:shadow-[0_6px_16px_rgba(27,67,50,0.45)] focus:outline-none focus:ring-2 focus:ring-tower-gold focus:ring-offset-2 focus:ring-offset-tower-charcoal disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0"
+          className="mt-1 flex h-10 w-full items-center justify-center rounded-xl bg-tower-green text-sm font-semibold text-white shadow-[0_4px_12px_rgba(27,67,50,0.25)] transition-all duration-200 hover:-translate-y-px hover:bg-tower-green-dark hover:shadow-[0_6px_16px_rgba(27,67,50,0.35)] focus:outline-none focus:ring-2 focus:ring-tower-gold focus:ring-offset-2 focus:ring-offset-tower-dark disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0"
         >
           Connect to WiFi
         </button>

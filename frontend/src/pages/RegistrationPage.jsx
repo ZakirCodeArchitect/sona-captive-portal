@@ -13,15 +13,14 @@ export default function RegistrationPage() {
 
   return (
     <div className="relative flex h-dvh max-h-dvh flex-col overflow-hidden md:flex-row">
-      {/* Mobile — full-screen blurred background */}
+      {/* Mobile — soft light wash over building photo */}
       <div className="pointer-events-none fixed inset-0 md:hidden" aria-hidden="true">
         <img
           src="/sona-tower.png"
           alt=""
           className="h-full w-full scale-105 object-cover object-center blur-[12px]"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0F1714]/75 via-[#141C1A]/88 to-[#0A0E0D]/95" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(0,0,0,0.35)_100%)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#e4e8e6]/90 via-[#e4e8e6]/95 to-[#d8dedb]" />
       </div>
 
       {/* Desktop — left panel, image fills entire half */}
@@ -34,7 +33,7 @@ export default function RegistrationPage() {
       </div>
 
       {/* Form panel */}
-      <div className="relative z-10 flex min-h-0 flex-1 flex-col md:w-1/2 md:bg-tower-dark">
+      <div className="relative z-10 flex min-h-0 flex-1 flex-col bg-tower-dark/95 md:w-1/2 md:bg-tower-dark">
         <main className="flex flex-1 items-center justify-center overflow-hidden px-5 py-3 sm:px-8">
           <div className="w-full max-w-[400px] animate-fade-in-up">
             <header className="mb-4 text-center md:mb-5">
@@ -42,7 +41,7 @@ export default function RegistrationPage() {
                 <img
                   src="/sona-logo.png"
                   alt="Sona"
-                  className="h-16 w-16 rounded-xl object-contain shadow-lg shadow-black/30 sm:h-[4.5rem] sm:w-[4.5rem]"
+                  className="h-16 w-16 rounded-md object-contain shadow-md shadow-black/10 sm:h-[4.5rem] sm:w-[4.5rem]"
                 />
               </div>
               <p className="mb-1 text-sm font-semibold tracking-[0.12em] text-tower-gold uppercase">
