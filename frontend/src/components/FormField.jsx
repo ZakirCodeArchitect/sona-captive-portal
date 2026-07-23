@@ -6,12 +6,14 @@ export default function FormField({
   icon: Icon,
   error,
   optional = false,
+  required = false,
   children,
 }) {
   return (
     <div className="flex flex-col gap-1">
       <label htmlFor={id} className="text-xs font-medium text-tower-text-secondary">
         {label}
+        {required && <span className="ml-0.5 text-tower-error" aria-hidden="true">*</span>}
         {optional && (
           <span className="ml-1 font-normal text-tower-text-muted">(optional)</span>
         )}

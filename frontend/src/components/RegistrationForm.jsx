@@ -58,7 +58,7 @@ export default function RegistrationForm({ onSuccess }) {
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)} noValidate className="flex flex-col gap-2.5">
-        <FormField id="cnic" label="CNIC" icon={CreditCard} error={errors.cnic?.message}>
+        <FormField id="cnic" label="CNIC" icon={CreditCard} error={errors.cnic?.message} required>
           <input
             id="cnic"
             type="text"
