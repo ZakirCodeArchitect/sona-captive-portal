@@ -27,7 +27,7 @@ export default function RegistrationPage() {
       <div className="relative hidden overflow-hidden md:block md:h-full md:w-1/2">
         <img
           src="/sona-tower.png"
-          alt="Sona Tower"
+          alt="Sona Tower Lahore"
           className="absolute inset-0 h-full w-full object-cover object-center"
         />
       </div>
@@ -45,7 +45,7 @@ export default function RegistrationPage() {
                 />
               </div>
               <p className="mb-1 text-sm font-semibold tracking-[0.12em] text-tower-gold uppercase">
-                Sona Tower
+                Sona Tower Lahore
               </p>
               {!registrationComplete && (
                 <>
@@ -53,7 +53,7 @@ export default function RegistrationPage() {
                     Guest WiFi Registration
                   </h1>
                   <p className="mt-1 text-xs leading-snug text-tower-text-secondary sm:text-sm">
-                    Welcome to Sona Tower. Please register to access guest internet.
+                    Welcome to Sona Tower Lahore. Please register to access guest internet.
                   </p>
                 </>
               )}
@@ -69,7 +69,7 @@ export default function RegistrationPage() {
 
         <footer className="shrink-0 px-4 pb-3 pt-1 text-center">
           <p className="text-[10px] text-tower-text-muted">
-            © {new Date().getFullYear()} Sona Tower · Fauji Fertilizer Company Limited
+            © {new Date().getFullYear()} Sona Tower Lahore · Fauji Fertilizer Company Limited
           </p>
           <p className="mt-0.5 text-[10px] text-tower-text-muted">
             <a

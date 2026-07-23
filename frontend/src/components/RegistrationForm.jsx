@@ -1,12 +1,10 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import {
-  Building2,
   CreditCard,
   Loader2,
   Lock,
   Phone,
-  User,
 } from 'lucide-react';
 import FormField, { getInputClassName } from './FormField';
 import TermsModal from './TermsModal';
@@ -14,8 +12,6 @@ import { submitRegistration } from '../api/client';
 import { formatCnic, formatPhone } from '../utils/formatters';
 import {
   validateCnic,
-  validateCompany,
-  validateFullName,
   validatePhone,
   validateTerms,
 } from '../utils/validation';
@@ -33,9 +29,7 @@ export default function RegistrationForm({ onSuccess }) {
   } = useForm({
     defaultValues: {
       cnic: '',
-      fullName: '',
       phoneNumber: '',
-      company: '',
       acceptTerms: false,
     },
     mode: 'onBlur',
@@ -49,9 +43,7 @@ export default function RegistrationForm({ onSuccess }) {
     try {
       const result = await submitRegistration({
         cnic: data.cnic,
-        fullName: data.fullName.trim(),
-        phoneNumber: data.phoneNumber,
-        company: data.company.trim(),
+        phoneNumber: data.phoneNumber || '',
       });
 
       setSubmitError('');
@@ -82,19 +74,13 @@ export default function RegistrationForm({ onSuccess }) {
           />
         </FormField>
 
-        <FormField id="fullName" label="Full Name" icon={User} error={errors.fullName?.message}>
-          <input
-            id="fullName"
-            type="text"
-            autoComplete="name"
-            placeholder="Enter your full name"
-            disabled={isSubmitting}
-            className={getInputClassName({ hasError: !!errors.fullName, hasIcon: true })}
-            {...register('fullName', { validate: validateFullName })}
-          />
-        </FormField>
-
-        <FormField id="phoneNumber" label="Phone Number" icon={Phone} error={errors.phoneNumber?.message}>
+        <FormField
+          id="phoneNumber"
+          label="Phone Number"
+          icon={Phone}
+          error={errors.phoneNumber?.message}
+          optional
+        >
           <input
             id="phoneNumber"
             type="tel"
@@ -108,18 +94,6 @@ export default function RegistrationForm({ onSuccess }) {
               onChange: (e) =>
                 setValue('phoneNumber', formatPhone(e.target.value), { shouldValidate: false }),
             })}
-          />
-        </FormField>
-
-        <FormField id="company" label="Company Name" icon={Building2} error={errors.company?.message}>
-          <input
-            id="company"
-            type="text"
-            autoComplete="organization"
-            placeholder="Enter your company name"
-            disabled={isSubmitting}
-            className={getInputClassName({ hasError: !!errors.company, hasIcon: true })}
-            {...register('company', { validate: validateCompany })}
           />
         </FormField>
 

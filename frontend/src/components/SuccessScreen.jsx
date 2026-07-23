@@ -9,7 +9,7 @@ export default function SuccessScreen({ registrationTime }) {
       </div>
       <h2 className="mb-2 text-lg font-semibold text-tower-text">Registration Successful</h2>
       <p className="mb-3 max-w-sm text-sm leading-snug text-tower-text-secondary">
-        You are now connected to Sona Tower Guest WiFi. You may close this page and start browsing.
+        You are now connected to Sona Tower Lahore Guest WiFi. You may close this page and start browsing.
       </p>
       {registrationTime && (
         <p className="text-[13px] text-tower-text-muted">

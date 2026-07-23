@@ -4,13 +4,13 @@ import { X } from 'lucide-react';
 
 const TERMS_TEXT = `Guest WiFi Terms & Conditions
 
-By connecting to Sona Tower Guest WiFi, you agree to the following:
+By connecting to Sona Tower Lahore Guest WiFi, you agree to the following:
 
-1. This network is provided for legitimate guest use during your visit to Sona Tower.
-2. You must provide accurate registration information including your CNIC, full name, phone number, and company name.
-3. Internet access is subject to Sona Tower's acceptable use policies. Illegal activities, unauthorized access, and misuse of the network are strictly prohibited.
+1. This network is provided for legitimate guest use during your visit to Sona Tower Lahore.
+2. You must provide accurate registration information including your CNIC. Phone number is optional.
+3. Internet access is subject to Sona Tower Lahore's acceptable use policies. Illegal activities, unauthorized access, and misuse of the network are strictly prohibited.
 
-For assistance, contact the Sona Tower IT Help Desk.`;
+For assistance, contact the Sona Tower Lahore IT Help Desk.`;
 
 export default function TermsModal({ isOpen, onClose }) {
   useEffect(() => {
